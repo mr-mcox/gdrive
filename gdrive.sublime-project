@@ -2,23 +2,24 @@
 	"build_systems":
 	[
 		{
-			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-			"name": "Anaconda Python Builder",
-			"selector": "source.python",
-			"shell_cmd": "/usr/local/bin/python3 -u \"$file\""
-		},
-		{
 			"cmd":
 			[
-				"py.test"
+				"venv/bin/py.test",
+				"tests"
 			],
 			"env":
 			{
-				"PYTHONPATH": "/Users/mcox/Code/Python"
+				"PYTHONPATH": "/Users/mcox/Code/Python/gdrive"
 			},
 			"name": "Run Tests",
 			"path": "/usr/local/bin/",
-			"working_dir": "${project_path}"
+			"working_dir": "${project_path:${folder}}"
+		},
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"/usr/local/bin/python3\" -u \"$file\""
 		}
 	],
 	"folders":
