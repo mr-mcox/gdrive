@@ -4,14 +4,14 @@ from os import path
 import pytest
 
 # @pytest.mark.xfail
-
-
+@patch('gdrive.gdrive.GDrive.set_filename')
 @patch('pydrive.drive.GoogleDrive')
 @patch('pydrive.auth.GoogleAuth')
-def test_basic_file_upload(mockAuth, mockDrive):
+def test_basic_file_upload(mockAuth, mockDrive, mockSetName):
     # When command line called with a file
-    filename = 'inputs/myfile.xlsx'
-    gdrive.parse_args([filename])
+    filename = 'myfile'
+    file_path = 'inputs/{}.xlsx'.format(filename)
+    gdrive.parse_args([file_path])
     # Authenticator called with settings file in box folder
     exp_file = path.expanduser(
         path.join('~', 'Box Sync',
@@ -21,7 +21,7 @@ def test_basic_file_upload(mockAuth, mockDrive):
     # Create file called
     assert mockDrive().CreateFile.called
     # SetContentFile called with input file
-    mockDrive().CreateFile().SetContentFile.assert_called_with(filename)
+    mockDrive().CreateFile().SetContentFile.assert_called_with(file_path)
     # Title of file is myfile
-
+    assert mockSetName.called
     # Upload is called on file

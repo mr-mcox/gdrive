@@ -1,6 +1,7 @@
 import pydrive
 from os import path
 import argparse
+import re
 
 
 class GDrive(object):
@@ -21,6 +22,12 @@ class GDrive(object):
     def upload_file(self, filename):
         file = self.drive.CreateFile()
         file.SetContentFile(filename)
+        self.set_filename(file, filename)
+        return file
+
+    def set_filename(self, file, filename):
+        file['title'] = re.search(
+            '(.*)\.xlsx', path.basename(filename)).group(1)
 
 
 def parse_args(args):

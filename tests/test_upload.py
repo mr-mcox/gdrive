@@ -21,3 +21,16 @@ def test_content_set(mockAuth, mockDrive):
 
     gd.upload_file(filename2)
     mockDrive().CreateFile().SetContentFile.assert_called_with(filename2)
+
+
+@patch('pydrive.drive.GoogleDrive')
+@patch('pydrive.auth.GoogleAuth')
+def test_set_filename(mockAuth, mockDrive):
+    gd = gdrive.GDrive()
+    file = dict()
+
+    gd.set_filename(file, '../input/thefile.xlsx')
+    assert file['title'] == 'thefile'
+
+    gd.set_filename(file, '../input/thefile2.xlsx')
+    assert file['title'] == 'thefile2'
