@@ -5,7 +5,7 @@ Installation
 =============
 Run the following command from the Annaconda Command Prompt
 
-*pip install --upgrade git+https://github.com/mr-mcox/gdrive.git@v0.1.2#egg=gdrive*
+*pip install --upgrade git+https://github.com/mr-mcox/gdrive.git@v0.1.3#egg=gdrive*
 
 Initial setup
 =============
