@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 setup(name='gdrive',
-      version='0.1.0',
+      version='0.1.1',
       packages=find_packages(exclude=['docs', 'tests']),
       install_requires=['funcsigs>=0.4',
                         'google-api-python-client>=1.5.0',

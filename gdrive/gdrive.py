@@ -19,7 +19,7 @@ class GDrive(object):
         self.drive = pydrive.drive.GoogleDrive(self.auth)
 
     def authenticate(self, settings_file):
-        gauth = pydrive.auth.GoogleAuth(settings_file=settings_file)
+        gauth = self.auth.GoogleAuth(settings_file=settings_file)
         gauth.LocalWebserverAuth()
         return gauth
 
