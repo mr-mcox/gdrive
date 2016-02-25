@@ -1,6 +1,6 @@
 import pydrive
-from pydrive import GoogleAuth
-from pydrive import GoogleDrive
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
 from os import path
 import argparse
 import re
