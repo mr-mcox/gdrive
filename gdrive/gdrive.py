@@ -2,6 +2,7 @@ import pydrive
 from os import path
 import argparse
 import re
+import sys
 
 
 class GDrive(object):
@@ -48,3 +49,6 @@ def parse_args(args):
     gdrive = GDrive()
     gfile = GFile(gdrive)
     gfile.upload_file(arg_vals.filename)
+
+if __name__ == '__main__':
+    parse_args(sys.argv[1:])
