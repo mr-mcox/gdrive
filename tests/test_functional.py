@@ -3,6 +3,7 @@ from mock import patch
 from os import path
 import pytest
 
+
 @patch('gdrive.gdrive.GFile.set_filename')
 @patch('gdrive.gdrive.GoogleDrive')
 @patch('gdrive.gdrive.GoogleAuth')

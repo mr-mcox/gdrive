@@ -39,7 +39,7 @@ class GFile(object):
 
     def set_filename(self, file_path):
         self._file['title'] = re.search(
-            '(.*)\.xlsx', path.basename(file_path)).group(1)
+            '(.*)\..+', path.basename(file_path)).group(1)
 
 
 def parse_args(args):

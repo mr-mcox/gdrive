@@ -42,13 +42,16 @@ def test_content_set(gfile):
     gfile._file.SetContentFile.assert_called_with(filename2)
 
 
-def test_set_filename(gfile_dict):
+def test_set_filenames(gfile_dict):
 
     gfile_dict.set_filename('../input/thefile.xlsx')
     assert gfile_dict._file['title'] == 'thefile'
 
-    gfile_dict.set_filename('../input/thefile2.xlsx')
+    gfile_dict.set_filename('../input/thefile2.xls')
     assert gfile_dict._file['title'] == 'thefile2'
+
+    gfile_dict.set_filename('../input/thefile3.w.period.csv')
+    assert gfile_dict._file['title'] == 'thefile3.w.period'
 
 
 @patch('gdrive.gdrive.GFile.set_filename')
