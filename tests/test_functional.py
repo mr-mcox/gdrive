@@ -4,8 +4,8 @@ from os import path
 import pytest
 
 @patch('gdrive.gdrive.GFile.set_filename')
-@patch('pydrive.drive.GoogleDrive')
-@patch('pydrive.auth.GoogleAuth')
+@patch('gdrive.gdrive.GoogleDrive')
+@patch('gdrive.gdrive.GoogleAuth')
 def test_basic_file_upload(mockAuth, mockDrive, mockSetName):
     # When command line called with a file
     filename = 'myfile'

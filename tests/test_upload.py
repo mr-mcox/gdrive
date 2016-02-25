@@ -3,8 +3,8 @@ from mock import patch, MagicMock
 import pytest
 
 
-@patch('pydrive.drive.GoogleDrive')
-@patch('pydrive.auth.GoogleAuth')
+@patch('gdrive.GoogleDrive')
+@patch('gdrive.GoogleAuth')
 @pytest.fixture
 def gfile(mockAuth, mockDrive):
     gd = gdrive.GDrive()
@@ -12,8 +12,8 @@ def gfile(mockAuth, mockDrive):
     gf._file = MagicMock()
     return gf
 
-@patch('pydrive.drive.GoogleDrive')
-@patch('pydrive.auth.GoogleAuth')
+@patch('gdrive.GoogleDrive')
+@patch('gdrive.GoogleAuth')
 @pytest.fixture
 def gfile_dict(mockAuth, mockDrive):
     gd = gdrive.GDrive()
@@ -21,8 +21,8 @@ def gfile_dict(mockAuth, mockDrive):
     gf._file = dict()
     return gf
 
-@patch('pydrive.drive.GoogleDrive')
-@patch('pydrive.auth.GoogleAuth')
+@patch('gdrive.GoogleDrive')
+@patch('gdrive.GoogleAuth')
 def test_file_creation(mockAuth, mockDrive):
     gd = gdrive.GDrive()
     gf = gdrive.GFile(gd)

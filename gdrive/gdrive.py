@@ -1,4 +1,6 @@
 import pydrive
+from gdrive import GoogleAuth
+from gdrive import GoogleDrive
 from os import path
 import argparse
 import re
@@ -16,10 +18,10 @@ class GDrive(object):
                              'gdrive_settings.yaml')
         default_settings = path.expanduser(def_path)
         self.auth = self.authenticate(settings_file=default_settings)
-        self.drive = pydrive.drive.GoogleDrive(self.auth)
+        self.drive = GoogleDrive(self.auth)
 
     def authenticate(self, settings_file):
-        gauth = self.auth.GoogleAuth(settings_file=settings_file)
+        gauth = GoogleAuth(settings_file=settings_file)
         gauth.LocalWebserverAuth()
         return gauth
 
