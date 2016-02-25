@@ -3,8 +3,7 @@ from mock import patch
 from os import path
 import pytest
 
-# @pytest.mark.xfail
-@patch('gdrive.gdrive.GDrive.set_filename')
+@patch('gdrive.gdrive.GFile.set_filename')
 @patch('pydrive.drive.GoogleDrive')
 @patch('pydrive.auth.GoogleAuth')
 def test_basic_file_upload(mockAuth, mockDrive, mockSetName):
@@ -23,5 +22,6 @@ def test_basic_file_upload(mockAuth, mockDrive, mockSetName):
     # SetContentFile called with input file
     mockDrive().CreateFile().SetContentFile.assert_called_with(file_path)
     # Title of file is myfile
-    assert mockSetName.called
-    # Upload is called on file
+    mockSetName.assert_called_with(file_path)
+    # Upload is called
+    mockDrive().CreateFile().Upload.assert_called_with({'convert': True})
