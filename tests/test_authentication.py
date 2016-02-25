@@ -1,5 +1,5 @@
 from gdrive import gdrive
-from mock import patch
+from unittest.mock import patch
 
 
 @patch('gdrive.gdrive.GoogleDrive')

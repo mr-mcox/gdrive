@@ -1,5 +1,5 @@
 from gdrive import gdrive
-from mock import patch, MagicMock
+from unittest.mock import patch, MagicMock
 import pytest
 
 
